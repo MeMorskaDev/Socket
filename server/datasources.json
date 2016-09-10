@@ -2,5 +2,14 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "socketTestDb": {
+    "name": "socketTestDb",
+    "connector": "mongodb",
+    "host": "127.0.0.1", 
+    "database": "socketTestDb", 
+    "username": "", 
+    "password": "", 
+    "port": 27017
   }
 }

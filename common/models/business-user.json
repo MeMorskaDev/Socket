@@ -1,0 +1,39 @@
+{
+    "name": "BusinessUser",
+    "prural": "BusinessUsers",
+    "base": "User",
+    "properties": {
+        "businessUserId": {
+            "type": "string",
+            "id": true
+        },
+        "mobileNo": {
+            "type": "string",
+            "required": true
+        },
+        "otpVerrified": {
+            "type": "boolean",
+            "default": false
+        },
+        "emailVerrified": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "restaurant": {
+            "type": "hasMany",
+            "model": "Restaurant",
+            "foreignKey": "businessUserId"
+        }
+    },
+    "acls": [
+        {
+        "principalType": "ROLE",
+        "principalId": "$owner",
+        "permission": "ALLOW",
+        "property": "__create__restaurant"
+    }]
+}

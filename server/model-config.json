@@ -14,22 +14,34 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "socketTestDb"
+  },
+  "Test": {
+    "dataSource": "socketTestDb"
+  },
+  "Address": {
+    "dataSource": "socketTestDb"
+  },
+  "Restaurant": {
+    "dataSource": "socketTestDb"
+  },
+  "BusinessUser": {
+    "dataSource": "socketTestDb"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "socketTestDb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "socketTestDb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "socketTestDb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "socketTestDb",
     "public": false
   }
 }

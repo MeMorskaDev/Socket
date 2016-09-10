@@ -1,0 +1,48 @@
+{
+    "name": "Restaurant",
+    "prural": "Restaurants",
+    "properties": {
+        "restaurantId": {
+            "type": "string",
+            "id": true
+        },
+        "restaurantName": {
+            "type": "string",
+            "required": true
+        },
+        "address": {
+            "type": "Address",
+            "required": true
+        },
+        "phoneNumber": {
+            "type": "string"
+        },
+        "emailId": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "tags": {
+            "type": [
+                "String"
+            ]
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "BusinessUser": {
+            "type": "belongsTo",
+            "model": "BusinessUser",
+            "foreignKey": "businessUserId"
+        }
+    },
+    "acls": [
+        {
+        "principalType": "ROLE",
+        "principalId": "$authenticated",
+        "permission": "ALLOW",
+        "property": "*"
+    }]
+}
