@@ -3,13 +3,13 @@
     "name": "db",
     "connector": "memory"
   },
-  "mongodbSocket": { 
-    "name": "mongodbSocket",
+  "socketTestDb": {
+    "name": "socketTestDb",
     "connector": "mongodb",
     "host": "127.0.0.1", 
-    "database": "mongodbSocket", 
+    "database": "socketTestDb", 
     "username": "", 
     "password": "", 
-    "port": 27017 
+    "port": 27017
   }
 }

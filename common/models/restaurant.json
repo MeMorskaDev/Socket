@@ -1,0 +1,73 @@
+{
+    "name": "Restaurant",
+    "prural": "Restaurants",
+    "properties": {
+        "restaurantId": {
+            "type": "string",
+            "id": true
+        },
+        "restaurantName": {
+            "type": "string",
+            "required": true
+        },
+        "address": {
+            "type": "Address",
+            "required": true
+        },
+        "phoneNumber": {
+            "type": "string"
+        },
+        "emailId": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "restaurantWorkingHour": {
+            "type": "WorkingHour",
+            "required": false
+        },
+        "tags": {
+            "type": [
+                "String"
+            ]
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "BusinessUser": {
+            "type": "belongsTo",
+            "model": "BusinessUser",
+            "foreignKey": "businessUserId"
+        },
+        "RestaurantUser": {
+            "type": "hasMany",
+            "model": "RestaurantUser",
+            "foreignKey": "restaurantId"
+        },
+        "MenuStructure": {
+            "type": "hasMany",
+            "model": "MenuStructure",
+            "foreignKey": "restaurantId"
+        },
+        "MenuItem": {
+            "type": "hasMany",
+            "model": "MenuItem",
+            "foreignKey": "restaurantId"
+        },
+        "Order": {
+            "type": "hasMany",
+            "model": "Order",
+            "foreignKey": "restaurantId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}

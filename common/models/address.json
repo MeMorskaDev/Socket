@@ -1,0 +1,18 @@
+{
+    "name": "Address",
+    "prural": "Addresses",
+    "properties": {
+        "street_address": {
+            "type": "string"
+        },
+        "city": {
+            "type": "string"
+        },
+        "state": {
+            "type": "string"
+        },
+        "pin": {
+            "type": "number"
+        }
+    }
+}

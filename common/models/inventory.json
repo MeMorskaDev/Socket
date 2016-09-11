@@ -1,0 +1,34 @@
+{
+    "name": "Inventory",
+    "prural": "Inventories",
+    "properties": {
+        "inventoryId": {
+            "type": "string",
+            "id": true
+        },
+        "isAvaliable": {
+            "type": "boolean",
+            "required": true
+        },
+        "time": {
+            "type": "string"
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "MenuItem": {
+            "type": "belongsTo",
+            "model": "MenuItem",
+            "foreignKey": "menuItemId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}
