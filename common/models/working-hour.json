@@ -1,0 +1,16 @@
+{
+    "name": "WorkingHour",
+    "prural": "WorkingHours",
+    "properties": {
+        "workingHourPerDay": {
+            "type": [
+                "WorkingHourDay"
+            ]
+        },
+        "closedDate": {
+            "type": [
+                "date"
+            ]
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "OrderItem",
+    "prural": "OrderItems",
+    "properties": {
+        "orderItemId": {
+            "type": "string",
+            "id": true
+        },
+        "menuItem":{
+            "type":"MenuItem",
+            "required":true
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "Order": {
+            "type": "belongsTo",
+            "model": "Order",
+            "foreignKey": "orderId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}

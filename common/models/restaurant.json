@@ -23,6 +23,10 @@
         "website": {
             "type": "string"
         },
+        "restaurantWorkingHour": {
+            "type": "WorkingHour",
+            "required": false
+        },
         "tags": {
             "type": [
                 "String"
@@ -50,6 +54,11 @@
         "MenuItem": {
             "type": "hasMany",
             "model": "MenuItem",
+            "foreignKey": "restaurantId"
+        },
+        "Order": {
+            "type": "hasMany",
+            "model": "Order",
             "foreignKey": "restaurantId"
         }
     },

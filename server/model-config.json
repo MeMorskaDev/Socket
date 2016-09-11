@@ -19,14 +19,23 @@
   },
   "Test": {
     "dataSource": "socketTestDb",
-    "public": true
+    "public": false
   },
   "Address": {
-    "dataSource": "socketTestDb"
+    "dataSource": "socketTestDb",
+    "public": false
   },
   "Restaurant": {
     "dataSource": "socketTestDb",
     "public": true
+  },
+  "WorkingHour": {
+    "dataSource": "socketTestDb",
+    "public": false
+  },
+  "WorkingHourDay": {
+    "dataSource": "socketTestDb",
+    "public": false
   },
   "MenuStructure": {
     "dataSource": "socketTestDb",
@@ -36,11 +45,23 @@
     "dataSource": "socketTestDb",
     "public": true
   },
+  "Order": {
+    "dataSource": "socketTestDb",
+    "public": true
+  },
+  "OrderItem": {
+    "dataSource": "socketTestDb",
+    "public": true
+  },
   "RestaurantUser": {
     "dataSource": "socketTestDb",
     "public": true
   },
   "BusinessUser": {
+    "dataSource": "socketTestDb",
+    "public": true
+  },
+  "Inventory": {
     "dataSource": "socketTestDb",
     "public": true
   },
