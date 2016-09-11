@@ -14,19 +14,35 @@
     ]
   },
   "User": {
-    "dataSource": "socketTestDb"
+    "dataSource": "socketTestDb",
+    "public": true
   },
   "Test": {
-    "dataSource": "socketTestDb"
+    "dataSource": "socketTestDb",
+    "public": true
   },
   "Address": {
     "dataSource": "socketTestDb"
   },
   "Restaurant": {
-    "dataSource": "socketTestDb"
+    "dataSource": "socketTestDb",
+    "public": true
+  },
+  "MenuStructure": {
+    "dataSource": "socketTestDb",
+    "public": true
+  },
+  "MenuItem": {
+    "dataSource": "socketTestDb",
+    "public": true
+  },
+  "RestaurantUser": {
+    "dataSource": "socketTestDb",
+    "public": true
   },
   "BusinessUser": {
-    "dataSource": "socketTestDb"
+    "dataSource": "socketTestDb",
+    "public": true
   },
   "AccessToken": {
     "dataSource": "socketTestDb",

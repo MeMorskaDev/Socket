@@ -36,13 +36,29 @@
             "type": "belongsTo",
             "model": "BusinessUser",
             "foreignKey": "businessUserId"
+        },
+        "RestaurantUser": {
+            "type": "hasMany",
+            "model": "RestaurantUser",
+            "foreignKey": "restaurantId"
+        },
+        "MenuStructure": {
+            "type": "hasMany",
+            "model": "MenuStructure",
+            "foreignKey": "restaurantId"
+        },
+        "MenuItem": {
+            "type": "hasMany",
+            "model": "MenuItem",
+            "foreignKey": "restaurantId"
         }
     },
     "acls": [
         {
-        "principalType": "ROLE",
-        "principalId": "$authenticated",
-        "permission": "ALLOW",
-        "property": "*"
-    }]
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
 }

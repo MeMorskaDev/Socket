@@ -1,0 +1,41 @@
+{
+    "name": "MenuStructure",
+    "prural": "MenuStructures",
+    "properties": {
+        "menuStructureId": {
+            "type": "string",
+            "id": true
+        },
+        "categoryName": {
+            "type": "string",
+            "required": true
+        },
+        "parentId": {
+            "type": "string",
+            "id": true,
+            "required": false
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "MenuItem": {
+            "type": "hasMany",
+            "model": "MenuItem",
+            "foreignKey": "menuStructureId"
+        },
+        "Restaurant": {
+            "type": "belongsTo",
+            "model": "Restaurant",
+            "foreignKey": "restaurantId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}
