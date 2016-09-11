@@ -1,7 +1,11 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
-
+var vertebrae = require('vertebrae');
+var path = require('path');
+var options = vertebrae.options;
 var app = module.exports = loopback();
+
+app.locals.apphome = __dirname;
 
 app.start = function() {
   // start the web server
@@ -18,7 +22,10 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+
+options.bootDirs.push(path.join(__dirname,'boot'));
+options.clientAppRootDir = __dirname;
+vertebrae.boot(app, options , function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
