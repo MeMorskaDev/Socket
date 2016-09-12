@@ -3,11 +3,11 @@
     "name": "db",
     "connector": "memory"
   },
-  "socketTestDb": {
-    "name": "socketTestDb",
+  "commonDb": {
+    "name": "commonDb",
     "connector": "mongodb",
     "host": "127.0.0.1", 
-    "database": "socketTestDb", 
+    "database": "commonDb", 
     "username": "", 
     "password": "", 
     "port": 27017

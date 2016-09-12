@@ -1,6 +1,7 @@
 {
     "name": "Inventory",
     "prural": "Inventories",
+    "base": "BaseEntity",
     "properties": {
         "inventoryId": {
             "type": "string",

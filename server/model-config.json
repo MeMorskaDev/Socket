@@ -4,6 +4,12 @@
       "loopback/common/models",
       "loopback/server/models",
       "../common/models",
+      "../common/models/common",
+      "../common/models/inventory",
+      "../common/models/menu",
+      "../common/models/order",
+      "../common/models/restaurant",
+      "../common/models/user-management",
       "./models"
     ],
     "mixins": [
@@ -13,72 +19,68 @@
       "./mixins"
     ]
   },
-  "User": {
-    "dataSource": "socketTestDb",
-    "public": true
-  },
-  "Test": {
-    "dataSource": "socketTestDb",
-    "public": false
-  },
   "Address": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "Restaurant": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "WorkingHour": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "WorkingHourDay": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "MenuStructure": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "MenuItem": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "Order": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "OrderItem": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "RestaurantUser": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "BusinessUser": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
   "Inventory": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": true
   },
+  "User": {
+    "dataSource": "commonDb",
+    "public": false
+  },
   "AccessToken": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "ACL": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   },
   "Role": {
-    "dataSource": "socketTestDb",
+    "dataSource": "commonDb",
     "public": false
   }
 }
