@@ -1,6 +1,7 @@
 {
     "name": "WorkingHour",
     "prural": "WorkingHours",
+    "base": "BaseEntity",
     "properties": {
         "workingHourPerDay": {
             "type": [

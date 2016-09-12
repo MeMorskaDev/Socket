@@ -1,25 +1,27 @@
 {
-    "name": "MenuItem",
-    "prural": "MenuItems",
+    "name": "Order",
+    "prural": "Orders",
+    "base": "BaseEntity",
     "properties": {
-        "menuItemId": {
+        "orderId": {
             "type": "string",
             "id": true
         },
-        "itemName": {
+        "status": {
             "type": "string",
             "required": true
         },
-        "itemPrice": {
+        "totalPayable": {
             "type": "number",
             "required": true
         },
-        "itemDescription": {
+        "paymentStatus": {
             "type": "string",
-            "required": false
+            "required": true
         },
-        "isVeg": {
-            "type": "boolean",
+        "createdBy": {
+            "type": "string",
+            "id": true,
             "required": true
         }
     },
@@ -31,15 +33,10 @@
             "model": "Restaurant",
             "foreignKey": "restaurantId"
         },
-        "MenuStructure": {
-            "type": "belongsTo",
-            "model": "MenuStructure",
-            "foreignKey": "menuStructureId"
-        },
-        "Inventory": {
-            "type": "hasOne",
-            "model": "Inventory",
-            "foreignKey": "menuItemId"
+        "OrderItem": {
+            "type": "hasMany",
+            "model": "OrderItem",
+            "foreignKey": "orderId"
         }
     },
     "acls": [

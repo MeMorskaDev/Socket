@@ -1,6 +1,7 @@
 {
     "name": "OrderItem",
     "prural": "OrderItems",
+    "base": "BaseEntity",
     "properties": {
         "orderItemId": {
             "type": "string",

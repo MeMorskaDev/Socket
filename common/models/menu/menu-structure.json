@@ -1,23 +1,30 @@
 {
-    "name": "RestaurantUser",
-    "prural": "RestaurantUsers",
-    "base": "User",
+    "name": "MenuStructure",
+    "prural": "MenuStructures",
+    "base": "BaseEntity",
     "properties": {
-        "restaurantUserId": {
+        "menuStructureId": {
             "type": "string",
             "id": true
         },
-        "name": {
+        "categoryName": {
             "type": "string",
-            "required": false
+            "required": true
         },
-        "phoneNumber": {
-            "type": "string"
+        "parentId": {
+            "type": "string",
+            "id": true,
+            "required": false
         }
     },
     "validations": [],
     "mixins": {},
     "relations": {
+        "MenuItem": {
+            "type": "hasMany",
+            "model": "MenuItem",
+            "foreignKey": "menuStructureId"
+        },
         "Restaurant": {
             "type": "belongsTo",
             "model": "Restaurant",
@@ -27,7 +34,7 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$authenticated",
+            "principalId": "$owner",
             "permission": "ALLOW",
             "property": "*"
         }
