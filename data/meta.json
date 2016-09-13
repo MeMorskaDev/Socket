@@ -1,0 +1,6 @@
+[
+    {
+        "model":"BusinessUser",
+        "path":"commonDb/business-user.json"
+    }
+]

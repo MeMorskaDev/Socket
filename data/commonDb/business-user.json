@@ -1,0 +1,14 @@
+[
+    {
+        "businessUserId":"BU001",
+        "email":"memorska01@xyz.com",
+        "password":"memorska",
+        "mobileNo":"0987654321"
+    },
+    {
+        "businessUserId":"BU002",
+        "email":"memorska02@xyz.com",
+        "password":"memorska",
+        "mobileNo":"0987654321"
+    }
+]
