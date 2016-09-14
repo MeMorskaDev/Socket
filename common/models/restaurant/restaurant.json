@@ -42,7 +42,7 @@
             "model": "BusinessUser",
             "foreignKey": "businessUserId"
         },
-        "RestaurantUser": {
+        "restaurantUser": {
             "type": "hasMany",
             "model": "RestaurantUser",
             "foreignKey": "restaurantId"
