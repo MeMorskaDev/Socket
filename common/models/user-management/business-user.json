@@ -1,7 +1,7 @@
 {
     "name": "BusinessUser",
     "prural": "BusinessUsers",
-    "base": "User",
+    "base": "BaseUser",
     "properties": {
         "businessUserId": {
             "type": "string",

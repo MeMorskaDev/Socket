@@ -1,6 +1,7 @@
 {
     "name": "Address",
     "prural": "Addresses",
+    "base": "BaseEntity",
     "properties": {
         "street_address": {
             "type": "string"

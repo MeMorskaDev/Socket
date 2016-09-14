@@ -1,6 +1,7 @@
 {
     "name": "Restaurant",
     "prural": "Restaurants",
+    "base": "BaseEntity",
     "properties": {
         "restaurantId": {
             "type": "string",
