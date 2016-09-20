@@ -1,6 +1,10 @@
 [
     {
-        "model":"BusinessUser",
-        "path":"commonDb/business-user.json"
+        "model": "BusinessUser",
+        "path": "commonDb/business-user.json"
+    },
+    {
+        "model": "BaseRole",
+        "path": "commonDb/base-role.json"
     }
 ]

@@ -1,4 +1,5 @@
 var loopback = require('loopback');
+var async = require('async');
 
 module.exports = function Restaurant(Restaurant) {
     Restaurant.validatesLengthOf('phoneNumber', { min: 10, message: { min: 'Restaurant Phone Number is too short' } });
@@ -19,11 +20,59 @@ module.exports = function Restaurant(Restaurant) {
         }
         var createdById = ctx.options.ctx.userId;
         BusinessUserModel.findById(createdById, function (err, businessUser) {
-            restaurant.restaurantUser.create({ "phoneNumber": businessUser.mobileNo, "password": businessUser.password, "email": businessUser.email }, function (err) {
+            restaurant.restaurantUser.create({
+                "phoneNumber": businessUser.mobileNo,
+                "password": businessUser.password,
+                "email": businessUser.email
+            }, function (err, restaurant) {
                 if (err)
                     console.log(err);
-                else
-                    next();
+                else {
+                    var BaseRoleMapping = loopback.getModel('BaseRoleMapping');
+
+                    async.parallel({
+                        one: function (callback) {
+                            BaseRoleMapping.create({
+                                "principalType": "USER",
+                                "principalId": restaurant.restaurantUserId,
+                                "_type": "BaseRoleMapping",
+                                "roleId": "rsaRoleId"
+                            }, function (err, baseRole) {
+                                if (err) {
+                                    console.log("Error in creating role mapping rsaRoleId for the business user " + err);
+                                    return callback(err);
+                                } else {
+                                    console.log("Base Role Mapping successfully created for restaurant user phone no" + restaurant.phoneNumber);
+                                    callback();
+                                }
+                            });
+                            //callback(null, 'abc\n');
+                        },
+                        two: function (callback) {
+                            BaseRoleMapping.create({
+                                "principalType": "USER",
+                                "principalId": restaurant.restaurantUserId,
+                                "_type": "BaseRoleMapping",
+                                "roleId": "managerRoleId"
+                            }, function (err, baseRole) {
+                                if (err) {
+                                    console.log("Error in creating role mapping managerRoleId for the business user " + err);
+                                    return callback(err);
+                                } else {
+                                    console.log("Base Role Mapping successfully created for restaurant user phone no" + restaurant.phoneNumber);
+                                    callback();
+                                }
+                            });
+                            //callback(null, 'xyz\n');
+                        }
+                    }, function (err, results) {
+                        if (err) {
+                            throw err;
+                        }
+                        console.log("Base Role Mapping successfully created for restaurant user phone no");
+                        next();
+                    });
+                }
             });
         });
     });

@@ -1,0 +1,17 @@
+[
+    {
+        "id": "managerRoleId",
+        "name": "manager",
+        "description": "Restaurant Manager"
+    },
+    {
+        "id": "waiterRoleId",
+        "name": "waiter",
+        "description": "Restaurant Waiter"
+    },
+    {
+        "id": "rsaRoleId",
+        "name": "rsa",
+        "description": "Restaurant Super Admin"
+    }
+]
