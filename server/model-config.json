@@ -51,10 +51,6 @@
     "dataSource": "commonDb",
     "public": true
   },
-  "RestaurantUser": {
-    "dataSource": "commonDb",
-    "public": true
-  },
   "BusinessUser": {
     "dataSource": "commonDb",
     "public": true

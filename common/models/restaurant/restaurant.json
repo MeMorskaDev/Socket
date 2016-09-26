@@ -37,15 +37,9 @@
     "validations": [],
     "mixins": {},
     "relations": {
-        "BusinessUser": {
-            "type": "belongsTo",
-            "model": "BusinessUser",
-            "foreignKey": "businessUserId"
-        },
-        "restaurantUser": {
-            "type": "hasMany",
-            "model": "RestaurantUser",
-            "foreignKey": "restaurantId"
+        "businessUsers": {
+            "type": "hasAndBelongsToMany",
+            "model": "BusinessUser"
         },
         "MenuStructure": {
             "type": "hasMany",
@@ -66,9 +60,16 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$owner",
+            "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "*"
+            "property": "create",
+            "accessType":"WRITE"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__businessUsers"
         }
     ]
 }

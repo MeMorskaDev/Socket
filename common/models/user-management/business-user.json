@@ -23,21 +23,20 @@
     "validations": [],
     "mixins": {},
     "relations": {
-        "restaurant": {
-            "type": "hasMany",
-            "model": "Restaurant",
-            "foreignKey": "businessUserId"
+        "restaurants": {
+            "type": "hasAndBelongsToMany",
+            "model": "Restaurant"
         }
     },
     "acls": [
         {
         "principalType": "ROLE",
-        "principalId": "$owner",
+        "principalId": "$authenticated",
         "permission": "ALLOW",
         "property": "__create__restaurant"
     }, {
         "principalType": "ROLE",
-        "principalId": "$owner",
+        "principalId": "$authenticated",
         "permission": "ALLOW",
         "property": "*"
     }]
