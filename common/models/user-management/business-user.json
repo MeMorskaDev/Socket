@@ -18,6 +18,12 @@
         "emailVerrified": {
             "type": "boolean",
             "default": false
+        },
+        "roleId": {
+            "type": [
+                "String"
+            ],
+            "required": false
         }
     },
     "validations": [],
@@ -30,14 +36,16 @@
     },
     "acls": [
         {
-        "principalType": "ROLE",
-        "principalId": "$authenticated",
-        "permission": "ALLOW",
-        "property": "__create__restaurant"
-    }, {
-        "principalType": "ROLE",
-        "principalId": "$authenticated",
-        "permission": "ALLOW",
-        "property": "*"
-    }]
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__restaurant"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
 }

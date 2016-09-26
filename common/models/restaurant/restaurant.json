@@ -41,17 +41,17 @@
             "type": "hasAndBelongsToMany",
             "model": "BusinessUser"
         },
-        "MenuStructure": {
+        "menuStructure": {
             "type": "hasMany",
             "model": "MenuStructure",
             "foreignKey": "restaurantId"
         },
-        "MenuItem": {
+        "menuItem": {
             "type": "hasMany",
             "model": "MenuItem",
             "foreignKey": "restaurantId"
         },
-        "Order": {
+        "order": {
             "type": "hasMany",
             "model": "Order",
             "foreignKey": "restaurantId"
@@ -62,14 +62,18 @@
             "principalType": "ROLE",
             "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "create",
-            "accessType":"WRITE"
+            "property": "__create__businessUsers"
         },
         {
             "principalType": "ROLE",
             "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "__create__businessUsers"
+            "property": "__create__menuStructure"
+        },{
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__get__menuStructure"
         }
     ]
 }

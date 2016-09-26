@@ -9,12 +9,17 @@ module.exports = function BusinessUser(BusinessUser) {
 
         //function createRsaRole(cb) {
         var BaseRoleMapping = loopback.getModel('BaseRoleMapping');
+        roleIds = [];
+        if (businessUser.roleId) {
+            roleIds = businessUser.roleId
+        } else {
+            roleIds = ["rsaRoleId", "managerRoleId"];
+        }
         BaseRoleMapping.create({
             "principalType": "USER",
             "principalId": businessUser.businessUserId,
             "_type": "BaseRoleMapping",
-            "roleId": "rsaRoleId"
-
+            "roleId": roleIds
         }, function (err, baseRole) {
             if (err) {
                 console.log("Error in creating role mapping for the business user " + err);
