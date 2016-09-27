@@ -1,0 +1,36 @@
+{
+    "name": "OTP",
+    "prural": "OTPs",
+    "base": "BaseEntity",
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": true
+        },
+        "state": {
+            "type": "string",
+            "required": true
+        },
+        "pin":{
+            "type":"Number",
+            "required": true
+        }
+    },
+    "validations": [],
+    "mixins": {},
+    "relations": {
+        "otp": {
+            "type": "belongsTo",
+            "model": "BusinessUser",
+            "foreignKey": "businessUserId"
+        }
+    },
+    "acls": [
+        {
+            "principalType": "ROLE",
+            "principalId": "$owner",
+            "permission": "ALLOW",
+            "property": "*"
+        }
+    ]
+}

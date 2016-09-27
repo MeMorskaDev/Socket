@@ -11,5 +11,21 @@
     "username": "", 
     "password": "", 
     "port": 27017
-  }
+  },
+    "myEmailDataSource": {
+       "connector": "mail",
+       "transports": [{
+         "type": "smtp",
+         "host": "mail.memorska.com",
+         "secure": false,
+         "port": 25,
+         "tls": {
+           "rejectUnauthorized": false
+         },
+         "auth": {
+           "user": "info@memorska.com",
+           "pass": "info@123"
+         }
+       }]
+    }
 }

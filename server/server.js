@@ -4,8 +4,15 @@ var vertebrae = require('vertebrae');
 var path = require('path');
 var options = vertebrae.options;
 var app = module.exports = loopback();
+var bodyParser = require('body-parser');
 
 app.locals.apphome = __dirname;
+
+// configure view handler
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../client/views'));
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.start = function() {
   // start the web server
