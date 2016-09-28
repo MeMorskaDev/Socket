@@ -16,6 +16,7 @@
       "loopback/common/mixins",
       "loopback/server/mixins",
       "../common/mixins",
+      "../common/mixins/user-management",
       "./mixins"
     ]
   },
@@ -59,6 +60,10 @@
     "dataSource": "commonDb",
     "public": true
   },
+  "OTP":{
+    "dataSource":"commonDb",
+    "public":true
+  },
   "Inventory": {
     "dataSource": "commonDb",
     "public": true
@@ -82,5 +87,8 @@
   "Role": {
     "dataSource": "commonDb",
     "public": false
+  },
+  "Email":{
+    "dataSource" : "myEmailDataSource"
   }
 }

@@ -13,8 +13,9 @@ module.exports = function uploadData(app, next) {
             var model = loopback.findModel(entry.model);
             model.create(data, function (err, data) {
                 if (err) {
+                    
                     err = _.filter(err, function (er) {
-                        return er.code !== 11000;
+                        return er.code !== 11000 && er.statusCode !== 422;
                     })
                     if (err.length > 0) {
                         console.log('err ', err);
