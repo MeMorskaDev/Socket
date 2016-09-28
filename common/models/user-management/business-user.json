@@ -3,8 +3,8 @@
     "prural": "BusinessUsers",
     "base": "BaseUser",
     "options": {
-        "emailVerificationRequired": true,
-        "optVerficationRequired": true
+        "emailVerificationRequired": false,
+        "optVerficationRequired": false
     },
     "properties": {
         "businessUserId": {

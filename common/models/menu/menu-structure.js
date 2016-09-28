@@ -1,4 +1,5 @@
 var loopback = require('loopback');
+var utils = require('../../Utils/utils');
 module.exports = function MenuStructure(MenuStructure) {
     MenuStructure.observe('before save', function (ctx, next) {
         var inputMenuStructure = ctx.data || ctx.instance;
@@ -15,7 +16,7 @@ module.exports = function MenuStructure(MenuStructure) {
                                 //console.log("Sub Catagoery " + subMenu.categoryName + " " + inputMenuStructure.__data.parentId);
                                 if (subMenu.categoryName === inputMenuStructure.__data.categoryName) {
                                     //console.log("Error here");
-                                    next(new Error('Error in creating MenuStructure as Sub Menu Exists'));
+                                    next(utils.getError("SUB_MENU_EXIST"));
                                 }
                             });
                             console.log("MenuStructure verified");
@@ -25,7 +26,7 @@ module.exports = function MenuStructure(MenuStructure) {
                     }
                     else {
                         console.log("Error in creating MenuStructure as parentId does not Exist");
-                        next(new Error('Error in creating MenuStructure as parentId does not Exist'));
+                        next(utils.getError("PARENT_DOES_NOT_EXIST"));
                     }
                 }
             });
