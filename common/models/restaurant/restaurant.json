@@ -3,7 +3,7 @@
     "prural": "Restaurants",
     "base": "BaseEntity",
     "properties": {
-        "restaurantId": {
+        "id": {
             "type": "string",
             "id": true
         },
@@ -41,17 +41,17 @@
             "type": "hasAndBelongsToMany",
             "model": "BusinessUser"
         },
-        "menuStructure": {
+        "menuStructures": {
             "type": "hasMany",
             "model": "MenuStructure",
             "foreignKey": "restaurantId"
         },
-        "menuItem": {
+        "menuItems": {
             "type": "hasMany",
             "model": "MenuItem",
             "foreignKey": "restaurantId"
         },
-        "order": {
+        "orders": {
             "type": "hasMany",
             "model": "Order",
             "foreignKey": "restaurantId"
@@ -68,12 +68,25 @@
             "principalType": "ROLE",
             "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "__create__menuStructure"
-        },{
+            "property": "__create__menuStructures"
+        },
+        {
             "principalType": "ROLE",
             "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "__get__menuStructure"
+            "property": "__get__menuStructures"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__menuItems"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__get__menuItems"
         }
     ]
 }

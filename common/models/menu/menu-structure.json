@@ -20,12 +20,12 @@
     "validations": [],
     "mixins": {},
     "relations": {
-        "menuItem": {
+        "menuItems": {
             "type": "hasMany",
             "model": "MenuItem",
             "foreignKey": "menuStructureId"
         },
-        "restaurant": {
+        "restaurants": {
             "type": "belongsTo",
             "model": "Restaurant",
             "foreignKey": "restaurantId"
@@ -34,7 +34,7 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$owner",
+            "principalId": "$authenticated",
             "permission": "ALLOW",
             "property": "*"
         }

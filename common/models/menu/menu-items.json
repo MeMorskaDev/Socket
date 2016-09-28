@@ -27,17 +27,17 @@
     "validations": [],
     "mixins": {},
     "relations": {
-        "Restaurant": {
+        "restaurants": {
             "type": "belongsTo",
             "model": "Restaurant",
             "foreignKey": "restaurantId"
         },
-        "MenuStructure": {
+        "menuStructures": {
             "type": "belongsTo",
             "model": "MenuStructure",
             "foreignKey": "menuStructureId"
         },
-        "Inventory": {
+        "inventories": {
             "type": "hasOne",
             "model": "Inventory",
             "foreignKey": "menuItemId"
@@ -46,7 +46,7 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$owner",
+            "principalId": "$authenticated",
             "permission": "ALLOW",
             "property": "*"
         }
