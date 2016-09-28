@@ -2,6 +2,10 @@
     "name": "BusinessUser",
     "prural": "BusinessUsers",
     "base": "BaseUser",
+    "options": {
+        "emailVerificationRequired": true,
+        "optVerficationRequired": true
+    },
     "properties": {
         "businessUserId": {
             "type": "string",
@@ -11,11 +15,15 @@
             "type": "string",
             "required": true
         },
-        "otpVerrified": {
+        "email": {
+            "type": "string",
+            "required": false
+        },
+        "otpVerified": {
             "type": "boolean",
             "default": false
         },
-        "emailVerrified": {
+        "emailVerified": {
             "type": "boolean",
             "default": false
         },
@@ -27,25 +35,45 @@
         }
     },
     "validations": [],
-    "mixins": {},
+    "mixins": {
+        "BusinessUserRegistration": true,
+        "OtpVerification": true
+    },
     "relations": {
         "restaurants": {
             "type": "hasAndBelongsToMany",
             "model": "Restaurant"
+        },
+        "otps": {
+            "type": "hasMany",
+            "model": "OTP",
+            "foreignKey": "businessUserId"
         }
     },
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$authenticated",
+            "principalId": "$owner",
             "permission": "ALLOW",
             "property": "__create__restaurant"
         },
         {
             "principalType": "ROLE",
-            "principalId": "$authenticated",
+            "principalId": "$owner",
             "permission": "ALLOW",
             "property": "*"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "sendOtp"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$everyone",
+            "permission": "ALLOW",
+            "property": "verifyOtp"
         }
     ]
 }
