@@ -3,7 +3,7 @@
     "prural": "Restaurants",
     "base": "BaseEntity",
     "properties": {
-        "restaurantId": {
+        "id": {
             "type": "string",
             "id": true
         },
@@ -37,27 +37,21 @@
     "validations": [],
     "mixins": {},
     "relations": {
-        "BusinessUser": {
-            "type": "belongsTo",
-            "model": "BusinessUser",
-            "foreignKey": "businessUserId"
+        "businessUsers": {
+            "type": "hasAndBelongsToMany",
+            "model": "BusinessUser"
         },
-        "RestaurantUser": {
-            "type": "hasMany",
-            "model": "RestaurantUser",
-            "foreignKey": "restaurantId"
-        },
-        "MenuStructure": {
+        "menuStructures": {
             "type": "hasMany",
             "model": "MenuStructure",
             "foreignKey": "restaurantId"
         },
-        "MenuItem": {
+        "menuItems": {
             "type": "hasMany",
             "model": "MenuItem",
             "foreignKey": "restaurantId"
         },
-        "Order": {
+        "orders": {
             "type": "hasMany",
             "model": "Order",
             "foreignKey": "restaurantId"
@@ -66,9 +60,40 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$owner",
+            "principalId": "$authenticated",
             "permission": "ALLOW",
-            "property": "*"
+            "property": "*",
+            "accessType": "*"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__businessUsers"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__menuStructures"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__get__menuStructures"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__menuItems"
+        },
+        {
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__get__menuItems"
         }
     ]
 }

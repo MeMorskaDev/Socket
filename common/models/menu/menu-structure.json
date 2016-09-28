@@ -14,18 +14,18 @@
         "parentId": {
             "type": "string",
             "id": true,
-            "required": false
+            "required": true
         }
     },
     "validations": [],
     "mixins": {},
     "relations": {
-        "MenuItem": {
+        "menuItems": {
             "type": "hasMany",
             "model": "MenuItem",
             "foreignKey": "menuStructureId"
         },
-        "Restaurant": {
+        "restaurants": {
             "type": "belongsTo",
             "model": "Restaurant",
             "foreignKey": "restaurantId"
@@ -34,7 +34,7 @@
     "acls": [
         {
             "principalType": "ROLE",
-            "principalId": "$owner",
+            "principalId": "$authenticated",
             "permission": "ALLOW",
             "property": "*"
         }

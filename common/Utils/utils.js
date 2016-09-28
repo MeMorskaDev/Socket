@@ -1,6 +1,6 @@
 var ErrorCode = require('./ErrorCode');
-module.exports ={
-    getError : getError
+module.exports = {
+    getError: getError
 }
 function getError(errorName, err) {
     if (!errorName) {
@@ -10,7 +10,7 @@ function getError(errorName, err) {
     }
 
     var error = createError(errorName);
-    if (err) {
+    if (err && typeof err === 'Object') {
         error.stack = err.stack;
         error.errorMessage = err.message;
     }
@@ -23,8 +23,8 @@ function createError(errorName) {
     var errorObj = ErrorCode[errorName];
     var error = new Error(errorObj.message);
     error.code = errorName;
-    for(key in errorObj){
-        if(errorObj.hasOwnProperty(key) && key !== 'message'){
+    for (key in errorObj) {
+        if (errorObj.hasOwnProperty(key) && key !== 'message') {
             error[key] = errorObj[key];
         }
     }
