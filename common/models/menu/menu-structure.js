@@ -12,10 +12,12 @@ module.exports = function MenuStructure(MenuStructure) {
                 } else {
                     if (menuStructure) {
                         MenuStructure.find({ where: { 'parentId': inputMenuStructure.__data.parentId } }, function (err, subMenus) {
+                            if (err) {
+                                console.log("Error in getting Parent for MenuStructure" + err);
+                                return next(err);
+                            }
                             subMenus.forEach(function (subMenu) {
-                                //console.log("Sub Catagoery " + subMenu.categoryName + " " + inputMenuStructure.__data.parentId);
                                 if (subMenu.categoryName === inputMenuStructure.__data.categoryName) {
-                                    //console.log("Error here");
                                     next(utils.getError("SUB_MENU_EXIST"));
                                 }
                             });

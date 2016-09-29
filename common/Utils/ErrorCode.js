@@ -23,5 +23,30 @@ module.exports = {
         "status": 400,
         "message": "Error in creating MenuStructure as parentId does not Exist",
         "applicationCode": "ME002"
+    },
+    "MENU_STRUCTURE_NOT_PROVIDED": {
+        "status": 400,
+        "message": "Error in creating MenuItem as MenuStructureId not provided",
+        "applicationCode": "MI001"
+    },
+    "MENU_STRUCTURE_NOT_EXIST": {
+        "status": 400,
+        "message": "Error in creating MenuItem as MenuStructureId does not Exist",
+        "applicationCode": "MI002"
+    },
+    "RESTAURANT_NOT_PROVIDED": {
+        "status": 400,
+        "message": "Error in creating MenuItem as RestaurantId not provided",
+        "applicationCode": "MI003"
+    },
+    "RESTAURANT_NOT_EXIST": {
+        "status": 400,
+        "message": "Error in creating MenuItem as RestaurantId does not Exist",
+        "applicationCode": "MI004"
+    },
+    "MENU_ITEM_EXISTS": {
+        "status": 400,
+        "message": "Error in creating MenuItem as MenuItem already exists",
+        "applicationCode": "MI005"
     }
 }
