@@ -37,6 +37,11 @@
             "principalId": "$authenticated",
             "permission": "ALLOW",
             "property": "*"
+        },{
+            "principalType": "ROLE",
+            "principalId": "$authenticated",
+            "permission": "ALLOW",
+            "property": "__create__menuItems"
         }
     ]
 }
