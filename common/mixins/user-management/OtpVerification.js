@@ -7,15 +7,16 @@ var client = require('twilio')(accountSid, authToken);
 
 var utils = require('../../Utils/utils');
 var loopback = require('loopback');
+var async = require('async');
 
 
 module.exports = function (Model) {
 
-    Model.sendOtp = function sendOtp(userId, options, cb) {
+    Model.sendOtp = function sendOtp(userId, cb) {
 
         Model.findById(userId, function (err, user) {
             if (err) {
-                return cb(utils.getError('DEFAULT_ERROR',err));
+                return cb(utils.getError('DEFAULT_ERROR', err));
             } else if (user) {
                 var Otp = loopback.getModel('OTP');
                 var query = {};
@@ -24,11 +25,11 @@ module.exports = function (Model) {
 
                 Otp.updateAll(query, { 'state': 'EXPIRED' }, function (err, response) {
                     if (err) {
-                        return cb(utils.getError('DEFAULT_ERROR',err));
+                        return cb(utils.getError('DEFAULT_ERROR', err));
                     } else {
                         user.otps.create(generateOTP(), function (err, otp) {
                             if (err) {
-                                return cb(utils.getError('DEFAULT_ERROR',err));
+                                return cb(utils.getError('DEFAULT_ERROR', err));
                             } else {
                                 sendOTP(user.mobileNo, otp.pin, function (err, message) {
                                     if (err) {
@@ -58,7 +59,7 @@ module.exports = function (Model) {
     }
 
 
-    Model.verifyOtp = function (userId, pin, options, cb) {
+    Model.verifyOtp = function (userId, pin, cb) {
         var OTP = loopback.getModel('OTP');
         OTP.findOne({
             where: {
@@ -68,16 +69,39 @@ module.exports = function (Model) {
             }
         }, function (err, otp) {
             if (err) {
-                 return cb(utils.getError('DEFAULT_ERROR',err));
+                return cb(utils.getError('DEFAULT_ERROR', err));
             } else if (otp) {
-                otp.updateAttributes({ 'state': 'USED' },
-                    function (err, opt) {
-                        if (err) {
-                           return cb(utils.getError('DEFAULT_ERROR',err));
-                        } else {
-                            return cb(null, 'otp verified');
-                        }
-                    })
+                async.parallel([
+                    function (callback) {
+                        console.log('Inside opt update');
+                        otp.updateAttributes({ 'state': 'USED' },
+                            function (err, opt) {
+                                if (err) {
+                                    return callback(utils.getError('DEFAULT_ERROR', err));
+                                } else {
+                                    return callback(null, 'OPT Updated');
+                                }
+                            })
+                    }, function (callback) {
+                        console.log('inside businessUser update');
+
+                        Model.findById(userId, function (err, businessUserId) {
+                    
+                            businessUserId.updateAttributes({otpVerified:true},function(err,updatedUser){
+                                callback(null,updatedUser);    
+                            })
+                        })
+                    }
+                ], function (err, results) {
+                    if (err) {
+                        return cb(err);
+                    } else {
+                        console.log(results);
+                        cb(null, 'otp verified');
+                    }
+                })
+
+
 
             } else {
                 var error = utils.getError('OTP_NOT_VERIFIED');

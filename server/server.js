@@ -3,8 +3,14 @@ var boot = require('loopback-boot');
 var vertebrae = require('vertebrae');
 var path = require('path');
 var options = vertebrae.options;
-var app = module.exports = loopback();
+var app = loopback();
 var bodyParser = require('body-parser');
+
+module.exports={
+  app :app,
+  vertebrae :vertebrae,
+  options :options
+}
 
 app.locals.apphome = __dirname;
 
@@ -36,6 +42,6 @@ vertebrae.boot(app, options , function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
-  if (require.main === module)
+  //if (require.main === module)
     app.start();
 });

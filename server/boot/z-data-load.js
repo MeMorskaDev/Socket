@@ -6,7 +6,7 @@ var upload = ["-u", "-U", "-upload", "-Upload"];
 var _ = require('lodash');
 module.exports = function uploadData(app, next) {
     console.log('process.argv ',process.argv);
-    if (upload.indexOf(process.argv[2]) !== -1) {
+    if (upload.indexOf(process.argv[2]) !== -1 || upload.indexOf(process.argv[3]) !== -1) {
         async.eachSeries(meta, function (entry, callback) {
 
             var data = require(path.join("../../", "data", entry.path));
